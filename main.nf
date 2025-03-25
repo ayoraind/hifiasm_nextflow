@@ -21,7 +21,7 @@ final_params = check_params(merged_params)
 pipeline_start_message(version, final_params)
 
 // include processes
-include { HIFIASM } from './modules/processes.nf' addParams(final_params)
+include { HIFIASM; GFA2FA } from './modules/processes.nf' addParams(final_params)
 
 workflow  {
 
@@ -32,6 +32,8 @@ workflow  {
 	   
 	  
 	   HIFIASM(reads_ch)
+	   
+	   GFA2FA(HIFIASM.out.primary_gfa_ch)
 }
 
 workflow.onComplete {

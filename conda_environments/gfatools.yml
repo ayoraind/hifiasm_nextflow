@@ -1,0 +1,7 @@
+name: gfatools
+channels:
+  - bioconda
+  - conda-forge
+  - nodefaults
+dependencies:
+  - bioconda::gfatools
