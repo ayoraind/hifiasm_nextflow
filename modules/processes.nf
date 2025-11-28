@@ -2,8 +2,8 @@ process HIFIASM {
     tag "$meta"
     publishDir "${params.output_dir}/$meta", mode:'copy'
 
-    errorStrategy { task.attempt <= 2 ? "retry" : "ignore" }
-    maxRetries 2
+    errorStrategy { task.attempt <= 5 ? "retry" : "ignore" }
+    maxRetries 5
     
     conda "${projectDir}/conda_environments/hifiasm.yml"
     
